@@ -89,6 +89,18 @@ class Input extends React.Component {
           { style: labelStyle, ...labelProps },
           styles.label(theme)
         )}
+        
+        {!!errorMessage && (
+          <Text
+            {...errorProps}
+            style={StyleSheet.flatten([
+              styles.error(theme),
+              errorStyle && errorStyle,
+            ])}
+          >
+            {errorMessage}
+          </Text>
+        )}
 
         <Animated.View
           style={StyleSheet.flatten([
@@ -130,17 +142,6 @@ class Input extends React.Component {
           )}
         </Animated.View>
 
-        {!!errorMessage && (
-          <Text
-            {...errorProps}
-            style={StyleSheet.flatten([
-              styles.error(theme),
-              errorStyle && errorStyle,
-            ])}
-          >
-            {errorMessage}
-          </Text>
-        )}
       </View>
     );
   }
